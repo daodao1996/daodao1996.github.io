@@ -11,9 +11,10 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=7.4.0">
   <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="刀刀的修炼之路" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
@@ -43,13 +44,13 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     },
     sidebarPadding: 40
   };
@@ -59,7 +60,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="categories">
 <meta property="og:url" content="http://yoursite.com/categories/index.html">
-<meta property="og:site_name" content="daodao">
+<meta property="og:site_name" content="刀刀的修炼之路">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-09-06T09:31:19.730Z">
 <meta name="twitter:card" content="summary">
@@ -78,10 +79,19 @@
   };
 </script>
 
-  <title>categories | daodao</title>
+  <title>categories | 刀刀的修炼之路</title>
   
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?dfd68c9207d2817150479314c6f71043";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -125,16 +135,16 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">daodao</span>
+        <span class="site-title">刀刀的修炼之路</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">daodao's blog</p>
+        <p class="site-subtitle">super daodao</p>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -183,16 +193,43 @@
       
       
         
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-归档">
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archives"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -254,7 +291,7 @@
         
           <div class="category-all-page">
             <div class="category-all-title">
-              No categories
+              暂无分类
             </div>
             <div class="category-all">
               
@@ -276,6 +313,15 @@
 
           </div>
           
+    
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+  
 
         </div>
           
@@ -298,10 +344,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -312,20 +358,54 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">北郊赵一刀</p>
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpeg"
+      alt="赵一刀">
+  <p class="site-author-name" itemprop="name">赵一刀</p>
   <div class="site-description" itemprop="description"></div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/archives/">
+          <a href="/archives">
         
           <span class="site-state-item-count">1</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
         </a>
       </div>
     
   </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/daodao1996" title="GitHub &rarr; https://github.com/daodao1996" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
 
 
 
@@ -345,11 +425,11 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">北郊赵一刀</span>
+  <span class="author" itemprop="copyrightHolder">赵一刀</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
 
         
 
@@ -390,6 +470,7 @@
 
 
 
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -402,12 +483,35 @@
 
 
 
+
+
+  
 
   
 
   
 
+<script>
+  function disqus_config() {
+    this.page.url = "http://yoursite.com/categories/index.html";
+    this.page.identifier = "categories/index.html";
+    this.page.title = 'categories';};
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://superdaodao.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
   
+</script>
 
 </body>
 </html>

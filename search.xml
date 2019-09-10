@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[hexo g 无法生成 index.html 文件]]></title>
+    <url>%2F2019%2F09%2F10%2Fhexo-g-failed%2F</url>
+    <content type="text"><![CDATA[今天在对博客进行一些基本设置之后，在执行hexo generate的时候，突然出现了很多错误 看提示我们知道，是依赖加载失败了，导致很多文件没有创建成功。 这时我们需要运行一下 1npm ls --depth 0 来查看依赖安装情况，我的执行结果如下图 可以看出有五个包都missing了，所以我们只需要挨个执行npm install就可以了，比如 1npm install hexo-generator-archive@^0.1.5 把该安装的依赖安装好，就可以愉快的执行hexo g 和 hexo s 在本地启动啦～]]></content>
+      <tags>
+        <tag>搭建博客</tag>
+      </tags>
+  </entry>
+</search>

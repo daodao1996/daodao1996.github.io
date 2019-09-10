@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>刀刀的修炼之路</title>
+  
+  <subtitle>super daodao</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-09-10T08:51:06.487Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>赵一刀</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo g 无法生成 index.html 文件</title>
+    <link href="http://yoursite.com/2019/09/10/hexo-g-failed/"/>
+    <id>http://yoursite.com/2019/09/10/hexo-g-failed/</id>
+    <published>2019-09-10T08:40:46.000Z</published>
+    <updated>2019-09-10T08:51:06.487Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在对博客进行一些基本设置之后，在执行hexo generate的时候，突然出现了很多错误</p><p><img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/WX20190910-162738_2x_kj8so5.png" alt></p><p>看提示我们知道，是依赖加载失败了，导致很多文件没有创建成功。</p><p>这时我们需要运行一下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls --depth 0</span><br></pre></td></tr></table></figure><p>来查看依赖安装情况，我的执行结果如下图</p><p><img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/npm_command_run_result_20190910_fi8t7e.png" alt></p><p>可以看出有五个包都missing了，所以我们只需要挨个执行npm install就可以了，比如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-archive@^0.1.5</span><br></pre></td></tr></table></figure><p>把该安装的依赖安装好，就可以愉快的执行hexo g 和 hexo s 在本地启动啦～</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天在对博客进行一些基本设置之后，在执行hexo generate的时候，突然出现了很多错误&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/WX2019
+      
+    
+    </summary>
+    
+    
+    
+      <category term="搭建博客" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+</feed>
