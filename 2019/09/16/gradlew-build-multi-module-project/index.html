@@ -56,13 +56,13 @@
   };
 </script>
 
-  <meta name="description" content="这篇文章中，我使用了IntelliJ IDEA来使用gradle + springBoot构建多模块工程。 创建多模块工程  首先，要新建一个rootProject，进行File -&amp;gt; New -&amp;gt; Project，进入到新建工程的界面    在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提">
+  <meta name="description" content="这篇文章中，我通过IntelliJ IDEA来使用gradle + springBoot构建多模块工程。 创建多模块工程  首先，要新建一个rootProject，进行File -&amp;gt; New -&amp;gt; Project，进入到新建工程的界面    在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提供">
 <meta name="keywords" content="gradle,spring boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle 构建多模块 spring boot 工程">
 <meta property="og:url" content="http://yoursite.com/2019/09/16/gradlew-build-multi-module-project/index.html">
 <meta property="og:site_name" content="刀刀的修炼之路">
-<meta property="og:description" content="这篇文章中，我使用了IntelliJ IDEA来使用gradle + springBoot构建多模块工程。 创建多模块工程  首先，要新建一个rootProject，进行File -&amp;gt; New -&amp;gt; Project，进入到新建工程的界面    在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提">
+<meta property="og:description" content="这篇文章中，我通过IntelliJ IDEA来使用gradle + springBoot构建多模块工程。 创建多模块工程  首先，要新建一个rootProject，进行File -&amp;gt; New -&amp;gt; Project，进入到新建工程的界面    在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提供">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://res.cloudinary.com/dehonlurm/image/upload/v1568688789/blog/2019.9.17/step1_ftbzll.png">
 <meta property="og:image" content="https://res.cloudinary.com/dehonlurm/image/upload/v1568689387/blog/2019.9.17/step6_y21iej.png">
@@ -70,10 +70,10 @@
 <meta property="og:image" content="https://res.cloudinary.com/dehonlurm/image/upload/v1568688788/blog/2019.9.17/step4_hecxbv.png">
 <meta property="og:image" content="https://res.cloudinary.com/dehonlurm/image/upload/v1568688788/blog/2019.9.17/step5_ed2dxs.png">
 <meta property="og:image" content="https://res.cloudinary.com/dehonlurm/image/upload/v1568691356/blog/2019.9.17/result_likqfb.png">
-<meta property="og:updated_time" content="2019-09-17T04:22:26.187Z">
+<meta property="og:updated_time" content="2019-09-17T05:22:28.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle 构建多模块 spring boot 工程">
-<meta name="twitter:description" content="这篇文章中，我使用了IntelliJ IDEA来使用gradle + springBoot构建多模块工程。 创建多模块工程  首先，要新建一个rootProject，进行File -&amp;gt; New -&amp;gt; Project，进入到新建工程的界面    在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提">
+<meta name="twitter:description" content="这篇文章中，我通过IntelliJ IDEA来使用gradle + springBoot构建多模块工程。 创建多模块工程  首先，要新建一个rootProject，进行File -&amp;gt; New -&amp;gt; Project，进入到新建工程的界面    在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提供">
 <meta name="twitter:image" content="https://res.cloudinary.com/dehonlurm/image/upload/v1568688789/blog/2019.9.17/step1_ftbzll.png">
   <link rel="canonical" href="http://yoursite.com/2019/09/16/gradlew-build-multi-module-project/">
 
@@ -303,7 +303,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-17 12:22:26" itemprop="dateModified" datetime="2019-09-17T12:22:26+08:00">2019-09-17</time>
+                <time title="修改时间：2019-09-17 13:22:28" itemprop="dateModified" datetime="2019-09-17T13:22:28+08:00">2019-09-17</time>
               </span>
             
           
@@ -319,7 +319,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>  这篇文章中，我使用了IntelliJ IDEA来使用gradle + springBoot构建多模块工程。</p>
+        <p>  这篇文章中，我通过IntelliJ IDEA来使用gradle + springBoot构建多模块工程。</p>
 <h2 id="创建多模块工程"><a href="#创建多模块工程" class="headerlink" title="创建多模块工程"></a>创建多模块工程</h2><p>  首先，要新建一个rootProject，进行File -&gt; New -&gt; Project，进入到新建工程的界面<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568688789/blog/2019.9.17/step1_ftbzll.png" alt><br>  在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提供的，大家也可以通过这个网址来初始化一个spring工程。</p>
 <p>  第二步，填写rootProject的信息，注意Type要选择Gradle Project，然后选择一下java版本<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568689387/blog/2019.9.17/step6_y21iej.png" alt></p>
 <p>  第三步，选择rootProject需要的一些依赖，比如devTools，SQL之类的，这个大家就按需选择吧<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568688789/blog/2019.9.17/step3_qmbh7z.png" alt></p>
