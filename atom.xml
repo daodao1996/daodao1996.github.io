@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-12T01:52:18.343Z</updated>
+  <updated>2019-09-17T04:18:42.545Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gradle 构建多模块 spring boot 工程</title>
+    <link href="http://yoursite.com/2019/09/16/gradlew-build-multi-module-project/"/>
+    <id>http://yoursite.com/2019/09/16/gradlew-build-multi-module-project/</id>
+    <published>2019-09-16T07:05:09.000Z</published>
+    <updated>2019-09-17T04:18:42.545Z</updated>
+    
+    <content type="html"><![CDATA[<p>  这篇文章中，我使用了IntelliJ IDEA来使用gradle + springBoot构建多模块工程。</p><h2 id="创建多模块工程"><a href="#创建多模块工程" class="headerlink" title="创建多模块工程"></a>创建多模块工程</h2><p>  首先，要新建一个rootProject，进行File -&gt; New -&gt; Project，进入到新建工程的界面<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568688789/blog/2019.9.17/step1_ftbzll.png" alt><br>  在这个界面的左边选择创建spring工程，右边选择jdk版本，可以看到还可以选择构建spring的初始化工具，默认是使用了spring官方提供的，大家也可以通过这个网址来初始化一个spring工程。</p><p>  第二步，填写rootProject的信息，注意Type要选择Gradle Project，然后选择一下java版本<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568689387/blog/2019.9.17/step6_y21iej.png" alt></p><p>  第三步，选择rootProject需要的一些依赖，比如devTools，SQL之类的，这个大家就按需选择吧<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568688789/blog/2019.9.17/step3_qmbh7z.png" alt></p><p>  第四步，填写一下工程名称和路径，然后点finish，rootProject就创建成功啦<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568688788/blog/2019.9.17/step4_hecxbv.png" alt></p><p>  第五步，开始在rootProject中创建子模块，直接右键rootProject的工程名，然后选择New -&gt; Module，就可以开始新建子模块了，具体的过程跟刚才新建project是一摸一样的，这里就不赘述啦，大家记得写好module的名字就好。<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568688788/blog/2019.9.17/step5_ed2dxs.png" alt></p><p>  构建好一个包含多个子模块的工程，我们的重点就要开始啦。我构建的rootProject叫做<code>circe</code>，包含了两个子模块，一个是<code>dao</code>，一个是<code>web</code>。</p><h2 id="配置gradle"><a href="#配置gradle" class="headerlink" title="配置gradle"></a>配置gradle</h2><p>  首先，编辑rootProject的settings.gradle，此时应该只有一句<code>rootProject.name = &#39;circe&#39;</code>，现在我们将子模块加入其中，加入<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include &apos;:dao&apos;, &apos;:web&apos;</span><br></pre></td></tr></table></figure></p><p>  表示该rootProject包含了dao和web两个subProject，因为我不需要在rootProject中写代码，所以把rootProject的src文件删掉了。</p><p>  然后在rootProject的build.gradle文件中的<code>dependencies</code>部分中加入<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;:dao&apos;</span><br><span class="line">implementation &apos;:web&apos;</span><br></pre></td></tr></table></figure></p><p>  依然在此文件中加入<code>allprojects</code>模块，来配置公共的属性（allprojects和刚才的dependencies是同级的，直接写在build.gradle中即可）。我的配置如下<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">  sourceCompatibility = &apos;11&apos;</span><br><span class="line"></span><br><span class="line">  group = &apos;com.circe&apos;</span><br><span class="line">  version = &apos;0.0.1-SNAPSHOT&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>  再给rootProject的build.gradle加入<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bootJar.enabled = false</span><br><span class="line">jar.enabled = true</span><br></pre></td></tr></table></figure></p><p>  这一步是因为我们最终要把所有的东西打成一个包，因为没有明显的程序入口，所以一直会报错，错误信息如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  Execution failed for task &apos;:bootJar&apos;.</span><br><span class="line">&gt; Could not resolve all files for configuration &apos;:runtimeClasspath&apos;.</span><br><span class="line">&gt; Could not find :dao:.</span><br><span class="line">     Required by:</span><br><span class="line">         project :</span><br><span class="line">   &gt; Could not find :web:.</span><br><span class="line">     Required by:</span><br><span class="line">         project :</span><br></pre></td></tr></table></figure></p><p>  其实我对于这个问题还不是很懂，以后搞懂了回来更新一下原因。一开始觉得需要指定一下<code>mainClassName</code>，但是上网查资料，各种排列组合一直也成功不了，所以现在只能暂时禁用bootJar，启用jar来解决这个问题。gradle中有各种各样的plugin可以进行这个打包操作，其中比较常用有jar和shadowJar，jar需要的配置比较少，相对的功能也就比较单一，只能满足最基本的需求，比如使用一些基本的类组成整个工程；如果需要在工程中加入一些其他的脚本之类的，可能就需要使用shadowJar来打包了。</p><p>  然后可以在子模块的build.gradle文件的dependencies部分中加入<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile project(&apos;:dao&apos;)</span><br></pre></td></tr></table></figure></p><p>  来表示子模块与其他模块的依赖，这里我的工程是web模块会依赖到dao模块，所以加入了这个配置，如果大家不需要也可以不加</p><p>  最后，删除子模块build.gradle文件中的plugins部分中的version的信息，因为rootProject的版本号可能会与子模块的起冲突。</p><p>  然后我们再在命令行中运行<code>./gradlew clean build</code>，就可以构建成功了。</p><p>  多模块工程构建成功的比较直观标志就是，在根目录中执行<code>./gradlew clean build</code>，rootProject和subProject中均会出现build目录，此处可以参照一下我的构建结果。<br>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568691356/blog/2019.9.17/result_likqfb.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  这篇文章中，我使用了IntelliJ IDEA来使用gradle + springBoot构建多模块工程。&lt;/p&gt;
+&lt;h2 id=&quot;创建多模块工程&quot;&gt;&lt;a href=&quot;#创建多模块工程&quot; class=&quot;headerlink&quot; title=&quot;创建多模块工程&quot;&gt;&lt;/a&gt;创建
+      
+    
+    </summary>
+    
+    
+    
+      <category term="gradle" scheme="http://yoursite.com/tags/gradle/"/>
+    
+      <category term="spring boot" scheme="http://yoursite.com/tags/spring-boot/"/>
+    
+  </entry>
   
   <entry>
     <title>使用hexo搭建博客遇到的一些问题总结</title>
