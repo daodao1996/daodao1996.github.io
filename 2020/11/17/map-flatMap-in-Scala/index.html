@@ -56,29 +56,33 @@
   };
 </script>
 
-  <meta name="keywords" content="developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="刀刀的修炼之路">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="用scala有段时间了，这篇文章是想总结一下map和flapMap的原理和用法 Scala Nativemap1234val l = List(10, 20, 30)val res: List[Option[Int]] = l.map(v =&amp;gt; if(v &amp;lt; 20) Some(v) else None)// res = List(Some(10), None, None)  从这例子我">
+<meta name="keywords" content="Scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="map &amp; flatMap in Scala">
+<meta property="og:url" content="http://yoursite.com/2020/11/17/map-flatMap-in-Scala/index.html">
 <meta property="og:site_name" content="刀刀的修炼之路">
+<meta property="og:description" content="用scala有段时间了，这篇文章是想总结一下map和flapMap的原理和用法 Scala Nativemap1234val l = List(10, 20, 30)val res: List[Option[Int]] = l.map(v =&amp;gt; if(v &amp;lt; 20) Some(v) else None)// res = List(Some(10), None, None)  从这例子我">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-11-17T11:37:35.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刀刀的修炼之路">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="map &amp; flatMap in Scala">
+<meta name="twitter:description" content="用scala有段时间了，这篇文章是想总结一下map和flapMap的原理和用法 Scala Nativemap1234val l = List(10, 20, 30)val res: List[Option[Int]] = l.map(v =&amp;gt; if(v &amp;lt; 20) Some(v) else None)// res = List(Some(10), None, None)  从这例子我">
+  <link rel="canonical" href="http://yoursite.com/2020/11/17/map-flatMap-in-Scala/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>刀刀的修炼之路</title>
+  <title>map & flatMap in Scala | 刀刀的修炼之路</title>
   
 
 
@@ -246,12 +250,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/17/map-flatMap-in-Scala/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -264,9 +269,8 @@
       <meta itemprop="name" content="刀刀的修炼之路">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/11/17/map-flatMap-in-Scala/" class="post-title-link" itemprop="url">map & flatMap in Scala</a>
+        <h1 class="post-title" itemprop="name headline">map & flatMap in Scala
+
           
         </h1>
 
@@ -300,7 +304,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>用scala有段时间了，这篇文章是想总结一下<code>map</code>和<code>flapMap</code>的原理和用法</p>
+        <p>用scala有段时间了，这篇文章是想总结一下<code>map</code>和<code>flapMap</code>的原理和用法</p>
 <h2 id="Scala-Native"><a href="#Scala-Native" class="headerlink" title="Scala Native"></a>Scala Native</h2><h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val l = List(10, 20, 30)</span><br><span class="line">val res: List[Option[Int]] = l.map(v =&gt; if(v &lt; 20) Some(v) else None)</span><br><span class="line"></span><br><span class="line">// res = List(Some(10), None, None)</span><br></pre></td></tr></table></figure>
 
 <p>从这例子我们可以看到，对一个int型的List进行遍历，当数值小于20，就返回Some(value)，否则返回None。</p>
@@ -359,223 +363,88 @@
 </ul>
 <p>最后一句：<em>有问题欢迎沟通交流或批评指正～</em></p>
 
-        
-      
     </div>
 
     
     
     
+        
+      
+        <div id="reward-container">
+  <div>愿意赞助博主吃曹氏鸭脖嘛？</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    愿意
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatPay.png" alt="赵一刀 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/aliPay.jpeg" alt="赵一刀 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Scala/" rel="tag"># Scala</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/11/hexo-build-blog/" rel="next" title="使用hexo搭建博客遇到的一些问题总结">
+                  <i class="fa fa-chevron-left"></i> 使用hexo搭建博客遇到的一些问题总结
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/hexo-build-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="赵一刀">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刀刀的修炼之路">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/11/hexo-build-blog/" class="post-title-link" itemprop="url">使用hexo搭建博客遇到的一些问题总结</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-11 16:59:57" itemprop="dateCreated datePublished" datetime="2019-09-11T16:59:57+08:00">2019-09-11</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-12 09:52:18" itemprop="dateModified" datetime="2019-09-12T09:52:18+08:00">2019-09-12</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h2><p>  一开始，我是把图片放到本地，然后在文章中使用<code>![]()</code>相对路径的方式引入图片，但是本地看着没有问题，运行起来就会出现图片不显示的问题，可能是有需要配置的地方漏掉了。而且把图片存在本地也会有图片越来越多，整个文件越来越大的问题，所以我就把图片全都存在了cloudinary里。</p>
-<p>  <a href="https://cloudinary.com" target="_blank" rel="noopener">cloudinary</a>是一个免费的，类似于百度云的网站，可以自己上传图片，然后就可以通过生成的网址来访问这张图片。用在博客里非常方便，并且也不会有占用内存的情况。</p>
-<p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193252/blog/2019.9.11/WechatIMG99_bpzh0o.png" alt></p>
-<p>  图片上传成功后，可以直接点击copy url的按钮复制链接，非常的方便容易上手。</p>
-<h2 id="访问域名404"><a href="#访问域名404" class="headerlink" title="访问域名404"></a>访问域名404</h2><p>  我第二次deploy的时候，发现怎么都不能通过我购买的域名来访问博客了，只能通过githubPage的url来访问，访问我购买的域名一直显示的是404，一度以为我的域名坏掉了，后来才发现我repo的设置github Page的custom domain部分被清空了</p>
-<p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193731/blog/2019.9.11/WechatIMG100_kwfgl2.png" alt></p>
-<p>  原来是每次提交之后都会刷新这部分内容，如果要通过域名访问，这部分是必须要如图填写的。</p>
-<p>  但是难道每次deploy之后都得来设置一下吗？这也太麻烦了，上网查了一下，原来只要在博客目录下的source目录下添加一个名为<code>CNAME</code>的文件，里面写入自己的域名即可，具体操作如下图</p>
-<p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193878/blog/2019.9.11/WechatIMG102_wnbuf5.png" alt></p>
-<p>  deploy之后，查看github repo的设置，当github Page部分的设置显示这样，就意味着域名部分的设置已经成功啦～</p>
-<p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193731/blog/2019.9.11/WechatIMG101_q5uz8f.png" alt></p>
-<h2 id="一些常用的hexo命令"><a href="#一些常用的hexo命令" class="headerlink" title="一些常用的hexo命令"></a>一些常用的hexo命令</h2><ul>
-<li><code>hexo new &quot;blogName&quot; //新建文章（可以缩写为 hexo n &quot;blogName&quot;）</code></li>
-<li><code>hexo generate //生成静态文件（可以缩写为 hexo g）</code></li>
-<li><code>hexo server   //启动本地服务（可以缩写为 hexo s）</code></li>
-<li><code>hexo deploy   //部署到github（可以缩写为 hexo d）</code></li>
-<li><code>hexo help  //查看帮助</code></li>
-<li><code>hexo s -g  //组合命令：生成静态文件并启动本地服务</code></li>
-<li><code>hexo d -g  //组合命令：生成静态文件并部署到github</code></li>
-</ul>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/hexo-g-failed/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="赵一刀">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刀刀的修炼之路">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/10/hexo-g-failed/" class="post-title-link" itemprop="url">hexo g 无法生成 index.html 文件</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-10 16:40:46" itemprop="dateCreated datePublished" datetime="2019-09-10T16:40:46+08:00">2019-09-10</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-12 09:52:12" itemprop="dateModified" datetime="2019-09-12T09:52:12+08:00">2019-09-12</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天在对博客进行一些基本设置之后，在执行hexo generate的时候，突然出现了很多错误</p>
-<p><img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/WX20190910-162738_2x_kj8so5.png" alt></p>
-<p>看提示我们知道，是依赖加载失败了，导致很多文件没有创建成功。</p>
-<p>这时我们需要运行一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls --depth 0</span><br></pre></td></tr></table></figure>
-
-<p>来查看依赖安装情况，我的执行结果如下图</p>
-<p><img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/npm_command_run_result_20190910_fi8t7e.png" alt></p>
-<p>可以看出有五个包都missing了，所以我们只需要挨个执行npm install就可以了，比如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-archive@^0.1.5</span><br></pre></td></tr></table></figure>
-
-<p>把该安装的依赖安装好，就可以愉快的执行hexo g 和 hexo s 在本地启动啦～</p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
           
+    
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+  
 
         </div>
           
@@ -590,6 +459,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -602,6 +476,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scala-Native"><span class="nav-number">1.</span> <span class="nav-text">Scala Native</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">1.1.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flatMap"><span class="nav-number">1.2.</span> <span class="nav-text">flatMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cats-IO"><span class="nav-number">2.</span> <span class="nav-text">Cats IO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-1"><span class="nav-number">2.1.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flatMap-1"><span class="nav-number">2.2.</span> <span class="nav-text">flatMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for"><span class="nav-number">3.</span> <span class="nav-text">for</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -740,6 +616,27 @@
 
   
 
+<script>
+  function disqus_config() {
+    this.page.url = "http://yoursite.com/2020/11/17/map-flatMap-in-Scala/";
+    this.page.identifier = "2020/11/17/map-flatMap-in-Scala/";
+    this.page.title = 'map & flatMap in Scala';};
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://superdaodao.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+  
+</script>
 
 </body>
 </html>

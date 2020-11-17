@@ -1,49 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>使用hexo搭建博客遇到的一些问题总结</title>
-      <link href="/2019/09/11/hexo-build-blog/"/>
-      <url>/2019/09/11/hexo-build-blog/</url>
-      
-        <content type="html"><![CDATA[<h2 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h2><p>  一开始，我是把图片放到本地，然后在文章中使用<code>![]()</code>相对路径的方式引入图片，但是本地看着没有问题，运行起来就会出现图片不显示的问题，可能是有需要配置的地方漏掉了。而且把图片存在本地也会有图片越来越多，整个文件越来越大的问题，所以我就把图片全都存在了cloudinary里。</p><p>  <a href="https://cloudinary.com" target="_blank" rel="noopener">cloudinary</a>是一个免费的，类似于百度云的网站，可以自己上传图片，然后就可以通过生成的网址来访问这张图片。用在博客里非常方便，并且也不会有占用内存的情况。</p><p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193252/blog/2019.9.11/WechatIMG99_bpzh0o.png" alt></p><p>  图片上传成功后，可以直接点击copy url的按钮复制链接，非常的方便容易上手。</p><h2 id="访问域名404"><a href="#访问域名404" class="headerlink" title="访问域名404"></a>访问域名404</h2><p>  我第二次deploy的时候，发现怎么都不能通过我购买的域名来访问博客了，只能通过githubPage的url来访问，访问我购买的域名一直显示的是404，一度以为我的域名坏掉了，后来才发现我repo的设置github Page的custom domain部分被清空了</p><p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193731/blog/2019.9.11/WechatIMG100_kwfgl2.png" alt></p><p>  原来是每次提交之后都会刷新这部分内容，如果要通过域名访问，这部分是必须要如图填写的。</p><p>  但是难道每次deploy之后都得来设置一下吗？这也太麻烦了，上网查了一下，原来只要在博客目录下的source目录下添加一个名为<code>CNAME</code>的文件，里面写入自己的域名即可，具体操作如下图</p><p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193878/blog/2019.9.11/WechatIMG102_wnbuf5.png" alt></p><p>  deploy之后，查看github repo的设置，当github Page部分的设置显示这样，就意味着域名部分的设置已经成功啦～</p><p>  <img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568193731/blog/2019.9.11/WechatIMG101_q5uz8f.png" alt></p><h2 id="一些常用的hexo命令"><a href="#一些常用的hexo命令" class="headerlink" title="一些常用的hexo命令"></a>一些常用的hexo命令</h2><ul><li><code>hexo new &quot;blogName&quot; //新建文章（可以缩写为 hexo n &quot;blogName&quot;）</code></li><li><code>hexo generate //生成静态文件（可以缩写为 hexo g）</code></li><li><code>hexo server   //启动本地服务（可以缩写为 hexo s）</code></li><li><code>hexo deploy   //部署到github（可以缩写为 hexo d）</code></li><li><code>hexo help  //查看帮助</code></li><li><code>hexo s -g  //组合命令：生成静态文件并启动本地服务</code></li><li><code>hexo d -g  //组合命令：生成静态文件并部署到github</code></li></ul>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 搭建博客 </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo g 无法生成 index.html 文件</title>
-      <link href="/2019/09/10/hexo-g-failed/"/>
-      <url>/2019/09/10/hexo-g-failed/</url>
-      
-        <content type="html"><![CDATA[<p>今天在对博客进行一些基本设置之后，在执行hexo generate的时候，突然出现了很多错误</p><p><img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/WX20190910-162738_2x_kj8so5.png" alt></p><p>看提示我们知道，是依赖加载失败了，导致很多文件没有创建成功。</p><p>这时我们需要运行一下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls --depth 0</span><br></pre></td></tr></table></figure><p>来查看依赖安装情况，我的执行结果如下图</p><p><img src="https://res.cloudinary.com/dehonlurm/image/upload/v1568105226/blog/npm_command_run_result_20190910_fi8t7e.png" alt></p><p>可以看出有五个包都missing了，所以我们只需要挨个执行npm install就可以了，比如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-archive@^0.1.5</span><br></pre></td></tr></table></figure><p>把该安装的依赖安装好，就可以愉快的执行hexo g 和 hexo s 在本地启动啦～</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 搭建博客 </tag>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[map & flatMap in Scala]]></title>
+    <url>%2F2020%2F11%2F17%2Fmap-flatMap-in-Scala%2F</url>
+    <content type="text"><![CDATA[用scala有段时间了，这篇文章是想总结一下map和flapMap的原理和用法 Scala Nativemap1234val l = List(10, 20, 30)val res: List[Option[Int]] = l.map(v =&gt; if(v &lt; 20) Some(v) else None)// res = List(Some(10), None, None) 从这例子我们可以看到，对一个int型的List进行遍历，当数值小于20，就返回Some(value)，否则返回None。 即我们通过这个map把List里的元素根据一定的逻辑转换成了Option类型，这也符合map的源码，把List里的元素，从类型A转换到类型B,最后返回List[B]: 1final override def map[B](f: A =&gt; B): List[B] flatMap1234val l = List(10, 20, 30)val res: List[Int] = l.flatMap(v =&gt; if(v &lt; 20) Some(v) else None)// res = List(10) 可以看出来flatMap比map多做的一个操作是，把List(Some(10), None, None)转换成List(10), 查看源码： 1final override def flatMap[B](f: A =&gt; IterableOnce[B]): List[B] 可以看出来flatMap是把类型A转换成了IterableOnce类型, 这里能说明Option是IterableOnce的子类。 但是为什么最后返回的是Int类型？是什么操作把IterableOnce类型转换成了Int类型？ 123456val l = List(10, 20, 30)val res: List[Option[Int]] = l.map(v =&gt; if(v &lt; 20) Some(v) else None)val res1: List[Int] = res.flatten// res = List(Some(10), None, None)// res1 = List(10) 看起来是flatMap比map多调用了flatten方法。 对res做flatten操作之后可以看到原来res里的Option类型的元素都被“拍平”了，那么是谁帮我们做了这件事呢？显而易见是scala内置的方法，应该是Option里把这个方法implicit了，这里我们不深究 OK，到这儿基本可以总结一下了，flatMap = map + flatten 另外补充两点： flatMap只能把List里的元素拍平一层。比如把Option[String] 解成 String，并不能直接解成 Char，根本原因是只能implicit一次。 flatMap并不是能把任何类型都能解开。 比如我们自己定义一个case class Person(age: Int)，然后在调用flatMap的时候给了一个Int =&gt; Person的方法，那么编译器会报错，因为他没有找到一个Person =&gt; IterableOnce的方法。刚才我们说Option里一定有一个implicit的方法就是这个原因。 Cats IOmap123val io = IO(5)val r1: IO[Boolean] = io.map(v =&gt; if(v &gt; 3) true else false)print(r1.unsafeRunSync()) //true 这里调用的map是cats库里的map，可以拿到IO里的元素然后根据传入的参数进行转换，源码： 1final def map[B](f: A =&gt; B): IO[B] 套用到刚才给的例子里，我们传入一个Int =&gt; Boolean的方法，然后map会返回一个IO[Boolean] flatMap12345val io = IO(5)val r1: IO[Boolean] = io.flatMap(v =&gt; if(v &gt; 3) IO(true) else IO(false))val r: IO[IO[Boolean]] = io.map(v =&gt; if(v &gt; 3) IO(true) else IO(false))print(r1.unsafeRunSync()) //trueprint(r1.unsafeRunSync().unsafeRunSync()) //true 可以看出来，跟map的区别是，IO的flatMap可以把返回的IO再解开，源码： 1final def flatMap[B](f: A =&gt; IO[B]): IO[B] 所以一般遇到需要用IO的flatMap的场景一般是需要raise error，比如： 1val r1: IO[Boolean] = io.flatMap(v =&gt; if(v &gt; 3) IO(true) else IO.raiseError(new RuntimeException)) 因为返回的类型是一定的，所以不能前一半返回Boolean，后一半返回IO，这时如果使用flatMap就会方便许多 for之前举的几个例子都比较简单，如果遇到了复杂的情况： 123456789101112val r = List(Some(List(Some(10), Some(20), None)), Some(List(Some(20), Some(30), Some(40))), Some(List(Some(3))), None) val result = r.flatMap(v =&gt; &#123;if(v.get.size &gt; 1) v.get.flatMap(n =&gt; if(n.getOrElse(0) &gt; 10) n else None)else None&#125;) //result = List(20, 20, 30, 40) 这里模拟了一个比较复杂的场景，就是比如有一个类型为List[Option[List[Option[Int]]]]的变量，然后设置一些condition，最终我们希望得到一个类型为List[Int]的结果。 可能逻辑有点奇怪复杂并且莫名其妙，那是因为这个例子是我自己想的哈哈。其实我只是想说当出现flatMap或map层层嵌套的时候，代码看起来就很复杂，可读性断崖式下跌，反正我瞟一眼就不想仔细看里面的逻辑了，那咋办呢？ 我们可以利用scala提供的一个语法糖for来让代码更简洁易懂，用for重构之后的代码： 12345for&#123; r1 &lt;- input r2 &lt;- if(r1.getOrElse(List()).size &gt; 1) r1.get else List() r3 &lt;- if(r2.getOrElse(0) &gt; 10) r2 else None&#125; yield r3 这里的input就是上面提到的那个复杂的类型，然后在for里，用&lt;-来解一次之后，r1的类型就是Option[List[Option[Int]]]，然后我们用刚才的condition来对r1进行判断，并且也解一次，得到了类型为Option[Int]的r2(r1.get的类型为List[Option[Int]]，被&lt;-解开之后得到了类型为Option[Int]的r2)。再用刚才的第二个条件来操作，得到了类型为Int的r3。 这样写就简洁很多，把两个condition这样列出来明显增加了可读性。IO的flatMap也可以用for来重构，并且这是我们经常使用的方式。 一些补充： 虽然我们yield了类型为Int的r3，但是最后得到的还是一个List[Int]，原因是for其实就是map和flatMap的语法糖，所以List最后还会还是List，r3是最外层List的一个元素而已。 for的第一行一定要用&lt;-运算符，因为每个使用了&lt;-的语句是一个generator，for-comprehension一定要需要以一个generator开始（具体原因会在后续关于for-comprehension的文章里探讨，这里不深究啦） 最后一句：有问题欢迎沟通交流或批评指正～]]></content>
+      <tags>
+        <tag>Scala</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用hexo搭建博客遇到的一些问题总结]]></title>
+    <url>%2F2019%2F09%2F11%2Fhexo-build-blog%2F</url>
+    <content type="text"><![CDATA[上传图片 一开始，我是把图片放到本地，然后在文章中使用![]()相对路径的方式引入图片，但是本地看着没有问题，运行起来就会出现图片不显示的问题，可能是有需要配置的地方漏掉了。而且把图片存在本地也会有图片越来越多，整个文件越来越大的问题，所以我就把图片全都存在了cloudinary里。 cloudinary是一个免费的，类似于百度云的网站，可以自己上传图片，然后就可以通过生成的网址来访问这张图片。用在博客里非常方便，并且也不会有占用内存的情况。 图片上传成功后，可以直接点击copy url的按钮复制链接，非常的方便容易上手。 访问域名404 我第二次deploy的时候，发现怎么都不能通过我购买的域名来访问博客了，只能通过githubPage的url来访问，访问我购买的域名一直显示的是404，一度以为我的域名坏掉了，后来才发现我repo的设置github Page的custom domain部分被清空了 原来是每次提交之后都会刷新这部分内容，如果要通过域名访问，这部分是必须要如图填写的。 但是难道每次deploy之后都得来设置一下吗？这也太麻烦了，上网查了一下，原来只要在博客目录下的source目录下添加一个名为CNAME的文件，里面写入自己的域名即可，具体操作如下图 deploy之后，查看github repo的设置，当github Page部分的设置显示这样，就意味着域名部分的设置已经成功啦～ 一些常用的hexo命令 hexo new &quot;blogName&quot; //新建文章（可以缩写为 hexo n &quot;blogName&quot;） hexo generate //生成静态文件（可以缩写为 hexo g） hexo server //启动本地服务（可以缩写为 hexo s） hexo deploy //部署到github（可以缩写为 hexo d） hexo help //查看帮助 hexo s -g //组合命令：生成静态文件并启动本地服务 hexo d -g //组合命令：生成静态文件并部署到github]]></content>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo g 无法生成 index.html 文件]]></title>
+    <url>%2F2019%2F09%2F10%2Fhexo-g-failed%2F</url>
+    <content type="text"><![CDATA[今天在对博客进行一些基本设置之后，在执行hexo generate的时候，突然出现了很多错误 看提示我们知道，是依赖加载失败了，导致很多文件没有创建成功。 这时我们需要运行一下 1npm ls --depth 0 来查看依赖安装情况，我的执行结果如下图 可以看出有五个包都missing了，所以我们只需要挨个执行npm install就可以了，比如 1npm install hexo-generator-archive@^0.1.5 把该安装的依赖安装好，就可以愉快的执行hexo g 和 hexo s 在本地启动啦～]]></content>
+      <tags>
+        <tag>搭建博客</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
 </search>
